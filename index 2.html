@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soraya 60 anos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --marsala:#7a2e3a;
+      --marsala-dark:#5f1f2a;
+      --gold:#c7a45a;
+      --gold-soft:#e7d5a2;
+      --cream:#fffaf6;
+      --white:#ffffff;
+      --text:#3a2b2b;
+      --shadow:0 20px 40px rgba(122,46,58,.14);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Montserrat",system-ui,-apple-system,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(231,213,162,.26) 0, rgba(231,213,162,0) 23%),
+        radial-gradient(circle at 90% 20%, rgba(199,164,90,.16) 0, rgba(199,164,90,0) 24%),
+        linear-gradient(180deg,#fffefd 0%, #fff8f3 100%);
+      overflow-x:hidden;
+    }
+    .glitter, .glitter:before, .glitter:after{
+      position:fixed; inset:auto; pointer-events:none; content:"";
+      background-image:radial-gradient(circle, rgba(199,164,90,.55) 0 1px, transparent 1.2px);
+      background-size:18px 18px;
+      width:35vw; height:35vw; opacity:.25; filter:blur(.2px);
+      z-index:0;
+    }
+    .glitter{top:0; left:0}
+    .glitter:before{top:12vh; right:4vw; width:28vw; height:28vw; position:fixed}
+    .glitter:after{bottom:8vh; left:3vw; width:24vw; height:24vw; position:fixed}
+    .wrap{position:relative; z-index:1}
+    .hero{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      padding:36px 18px 44px;
+    }
+    .hero-card{
+      width:min(1120px,100%);
+      background:rgba(255,255,255,.78);
+      backdrop-filter: blur(12px);
+      border:1px solid rgba(199,164,90,.25);
+      border-radius:36px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+    }
+    .hero-copy{padding:64px 56px 56px; position:relative}
+    .eyebrow{
+      letter-spacing:.26em;
+      text-transform:uppercase;
+      color:var(--gold);
+      font-size:.8rem;
+      font-weight:600;
+      margin-bottom:10px;
+    }
+    h1{
+      font-family:"Cormorant Garamond", serif;
+      margin:0;
+      font-size:clamp(3.1rem,8vw,6.2rem);
+      line-height:.9;
+      color:var(--marsala-dark);
+      font-weight:600;
+    }
+    .age{
+      display:block;
+      font-family:"Allura", cursive;
+      color:var(--gold);
+      font-size:clamp(2.2rem,5vw,4.1rem);
+      margin:.35rem 0 .1rem;
+    }
+    .tagline{
+      font-family:"Cormorant Garamond", serif;
+      font-size:clamp(1.25rem,2.6vw,2rem);
+      line-height:1.28;
+      max-width:17ch;
+      margin:18px 0 22px;
+      color:#614646;
+    }
+    .hero-text{
+      max-width:60ch;
+      line-height:1.8;
+      font-size:1rem;
+      color:#5d4b4b;
+      margin-bottom:28px;
+    }
+    .cta-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:24px}
+    .btn{
+      appearance:none; border:none; border-radius:999px; cursor:pointer;
+      padding:15px 24px; font-weight:600; font-size:.95rem; text-decoration:none;
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:linear-gradient(135deg,var(--gold),#ecd39b); color:#4d3a1f; box-shadow:0 12px 26px rgba(199,164,90,.26)}
+    .btn-secondary{background:rgba(122,46,58,.08); color:var(--marsala); border:1px solid rgba(122,46,58,.16)}
+    .hero-media{position:relative; min-height:480px; background:linear-gradient(180deg,#fbf3ef,#fff)}
+    .frame{
+      position:absolute; inset:36px 36px 36px 0;
+      border-radius:30px 0 0 30px; overflow:hidden;
+      box-shadow:0 18px 36px rgba(0,0,0,.14);
+      background:#fff;
+    }
+    .frame img{width:100%; height:100%; object-fit:cover; object-position:center}
+    .floral{
+      position:absolute; width:min(230px,30vw); opacity:.96; filter:drop-shadow(0 10px 18px rgba(122,46,58,.12));
+    }
+    .floral.top-left{top:-16px; left:-14px; transform:rotate(-6deg)}
+    .floral.bottom-right{bottom:-18px; right:-10px; transform:rotate(7deg)}
+    .section{
+      width:min(1120px, calc(100% - 36px)); margin:0 auto 26px;
+      background:rgba(255,255,255,.8); border:1px solid rgba(199,164,90,.18);
+      box-shadow:var(--shadow); border-radius:var(--radius); padding:36px 26px;
+    }
+    .section-title{
+      font-family:"Cormorant Garamond", serif; font-size:clamp(2rem,4vw,3rem);
+      text-align:center; color:var(--marsala-dark); margin:0 0 10px;
+    }
+    .section-sub{max-width:760px; margin:0 auto 28px; text-align:center; line-height:1.8; color:#654f4f}
+    .details{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:24px}
+    .detail-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,248,242,.96));
+      border:1px solid rgba(199,164,90,.18); border-radius:22px; padding:22px; text-align:center;
+    }
+    .detail-label{font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:10px}
+    .detail-value{font-family:"Cormorant Garamond", serif; font-size:1.8rem; color:var(--marsala-dark); margin-bottom:8px}
+    .detail-small{line-height:1.7; color:#665252}
+    .program{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    }
+    .program-card{border-radius:22px; padding:22px; background:#fffaf7; border:1px solid rgba(122,46,58,.12)}
+    .program-card h3{margin:0 0 14px; font-family:"Cormorant Garamond", serif; font-size:1.8rem; color:var(--marsala)}
+    .program-card ul{margin:0; padding-left:18px; line-height:2}
+    .gallery{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .gallery img{width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:22px; box-shadow:0 16px 28px rgba(0,0,0,.1)}
+    .rsvp{
+      position:relative; overflow:hidden;
+      background:linear-gradient(160deg, rgba(122,46,58,.98), rgba(95,31,42,.96));
+      color:white; padding:40px 26px;
+    }
+    .rsvp .section-title, .rsvp .section-sub{color:white}
+    .rsvp .section-sub{opacity:.9}
+    .form-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:900px; margin:0 auto}
+    .field{display:flex; flex-direction:column; gap:8px}
+    .field.full{grid-column:1/-1}
+    label{font-size:.92rem; font-weight:600}
+    input, textarea, select{
+      width:100%; padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.1); color:white; font:inherit;
+      outline:none;
+    }
+    input::placeholder, textarea::placeholder{color:rgba(255,255,255,.7)}
+    textarea{min-height:110px; resize:vertical}
+    .rsvp-actions{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:22px}
+    .btn-light{background:white; color:var(--marsala-dark)}
+    .btn-outline{border:1px solid rgba(255,255,255,.24); color:white; background:transparent}
+    .mini-note{max-width:840px; margin:16px auto 0; text-align:center; font-size:.9rem; opacity:.88}
+    .footer{
+      text-align:center; padding:24px 20px 46px; color:#6d5a5a; font-size:.95rem;
+    }
+    .signature{font-family:"Allura", cursive; font-size:2rem; color:var(--gold); margin-top:8px}
+    @media (max-width: 900px){
+      .hero-card{grid-template-columns:1fr}
+      .hero-media{order:-1; min-height:360px}
+      .frame{inset:20px}
+      .hero-copy{padding:36px 24px 32px}
+      .details, .program, .gallery, .form-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="glitter"></div>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <div class="eyebrow">Convite especial</div>
+          <h1>Soraya <span class="age">60 anos</span></h1>
+          <div class="tagline">A idade perfeita para celebrar quem você se tornou.</div>
+          <p class="hero-text">
+            Com muito amor, eu e meu irmão preparamos uma noite inesquecível para celebrar a vida da nossa amada mãe, Soraya. Uma celebração elegante, cercada de afeto, memórias preciosas, boa música e pessoas especiais.
+          </p>
+          <div class="cta-row">
+            <a href="#rsvp" class="btn btn-primary">Confirmar presença</a>
+            <a href="#detalhes" class="btn btn-secondary">Ver detalhes</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img class="floral top-left" src="IMG_3627.jpeg" alt="Flores marsala decorativas">
+          <div class="frame">
+            <img src="IMG_6701.png" alt="Soraya e bebê">
+          </div>
+          <img class="floral bottom-right" src="IMG_3627.jpeg" alt="Flores marsala decorativas">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="detalhes">
+      <h2 class="section-title">Uma noite para celebrar a vida</h2>
+      <p class="section-sub">
+        Sua presença tornará este momento ainda mais especial. Preparamos uma celebração com recepção elegante, jantar, homenagens, música e lembranças de uma trajetória linda.
+      </p>
+      <div class="details">
+        <div class="detail-card">
+          <div class="detail-label">Data</div>
+          <div class="detail-value">25 de abril de 2026</div>
+          <div class="detail-small">Sábado</div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-label">Horário</div>
+          <div class="detail-value">19:30</div>
+          <div class="detail-small">Recepção a partir deste horário</div>
+        </div>
+        <div class="detail-card">
+          <div class="detail-label">Local</div>
+          <div class="detail-value">Praia dos Passarinhos</div>
+          <div class="detail-small">Av. Carlota Bomfim<br>Ponta Negra<br>Manaus – Amazonas</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="program">
+        <div class="program-card">
+          <h3>Experiência da noite</h3>
+          <ul>
+            <li>Recepção com drinks</li>
+            <li>Jantar especial</li>
+            <li>Música e pista de dança</li>
+            <li>Homenagens emocionantes</li>
+            <li>Apresentação de fotos e memórias</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <h3>Mensagem da família</h3>
+          <p style="line-height:1.9; margin:0; color:#624f4f;">
+            Cada detalhe foi preparado com carinho para honrar a história, a força e a beleza de Soraya. Esperamos você para brindar essa nova fase com alegria, gratidão e muito amor.
+          </p>
+          <div class="signature">Com carinho, família Soraya</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Memórias preciosas</h2>
+      <p class="section-sub">Um toque de afeto para anunciar uma celebração feita de amor, família e beleza.</p>
+      <div class="gallery">
+        <img src="IMG_6701.png" alt="Soraya com bebê">
+        <img src="IMG_3627.jpeg" alt="Arranjo de flores marsala">
+      </div>
+    </section>
+
+    <section class="section rsvp" id="rsvp">
+      <h2 class="section-title">Confirmação de presença</h2>
+      <p class="section-sub">
+        Preencha abaixo para enviar sua confirmação. O site gera uma mensagem pronta para WhatsApp com todos os dados do convidado.
+      </p>
+      <form id="rsvpForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="nome">Nome completo</label>
+            <input id="nome" name="nome" placeholder="Seu nome" required>
+          </div>
+          <div class="field">
+            <label for="telefone">Telefone</label>
+            <input id="telefone" name="telefone" placeholder="(92) 99999-9999" required>
+          </div>
+          <div class="field">
+            <label for="quantidade">Quantidade de pessoas</label>
+            <select id="quantidade" name="quantidade" required>
+              <option value="">Selecione</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="acompanhantes">Acompanhantes</label>
+            <input id="acompanhantes" name="acompanhantes" placeholder="Nomes dos acompanhantes">
+          </div>
+          <div class="field full">
+            <label for="obs">Observações</label>
+            <textarea id="obs" name="obs" placeholder="Restrições alimentares, recado ou observações"></textarea>
+          </div>
+        </div>
+        <div class="rsvp-actions">
+          <button type="submit" class="btn btn-light">Enviar via WhatsApp</button>
+          <button type="button" id="copyBtn" class="btn btn-outline">Copiar mensagem</button>
+        </div>
+        <div class="mini-note">
+          Antes de usar, troque o número do WhatsApp no arquivo por quem vai receber as confirmações. Deixei isso bem fácil no código.
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      Soraya 60 anos • 25 de abril de 2026 • Manaus, Amazonas
+    </footer>
+  </div>
+
+  <script>
+    // TROQUE AQUI pelo WhatsApp que vai receber as confirmações, somente números com DDI.
+    // Exemplo Manaus/Brasil: 5592999999999
+    const ORGANIZER_WHATSAPP = '5592999999999';
+
+    function buildMessage() {
+      const nome = document.getElementById('nome').value.trim();
+      const telefone = document.getElementById('telefone').value.trim();
+      const quantidade = document.getElementById('quantidade').value.trim();
+      const acompanhantes = document.getElementById('acompanhantes').value.trim();
+      const obs = document.getElementById('obs').value.trim();
+
+      return [
+        'Confirmação de Presença – Soraya 60 anos',
+        '',
+        `Nome: ${nome}`,
+        `Telefone: ${telefone}`,
+        `Quantidade de pessoas: ${quantidade}`,
+        `Acompanhantes: ${acompanhantes || 'Não informado'}`,
+        `Observações: ${obs || 'Nenhuma'}`,
+      ].join('\n');
+    }
+
+    document.getElementById('rsvpForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const msg = buildMessage();
+      const url = `https://wa.me/${ORGANIZER_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async function(){
+      const msg = buildMessage();
+      try {
+        await navigator.clipboard.writeText(msg);
+        this.textContent = 'Mensagem copiada';
+        setTimeout(() => this.textContent = 'Copiar mensagem', 1800);
+      } catch {
+        alert('Não foi possível copiar automaticamente.');
+      }
+    });
+  </script>
+</body>
+</html>
